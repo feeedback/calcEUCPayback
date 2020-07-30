@@ -19,41 +19,41 @@
         <h1>Расчёт экономии за проезд и окупаемости моноколеса</h1>
         <section class="info">
             <div class="column">
-                <h3>Траты на проезд на автобусе, в месяц:&thinsp;
+                <p>Траты на проезд на автобусе, в месяц:&thinsp;
                     <output name="busCostsMonthly" form="calc"
                         for="tripsToWorkPerMonth tripsToStorePerMonth busPrice"></output>&thinsp;рублей
-                </h3>
-                <h3>Траты на проезд на моноколесе, в месяц:&thinsp;
+                </p>
+                <p>Траты на проезд на моноколесе, в месяц:&thinsp;
                     <output name="EUCCostsMonthly" form="calc"
                         for="mileagePerMonth priceOfElectricityDay priceOfElectricityNight shareOfDaytimeFromAll batteryCapacityEUC cruisingRangeEUC">
                     </output>&thinsp;рублей
-                </h3>
-                <h3>Экономия за проезд, в месяц:&thinsp;
+                </p>
+                <p>Экономия за проезд, в месяц:&thinsp;
                     <output name="savingsOnTripsPerMonth" form="calc"
                         for="busCostsMonthly EUCCostsMonthly"></output>&thinsp;рублей
-                </h3>
-                <h3>Пробег, в месяц:&thinsp;
+                </p>
+                <p>Пробег, в месяц:&thinsp;
                     <output form="calc" name="mileagePerMonth"
                         for="tripsToWorkPerMonth distanceToWork tripsToStorePerMonth distanceToStore"></output>&thinsp;км
-                </h3>
+                </p>
             </div>
             <div class="column">
-                <h3>Траты на проезд на автобусе, в год:&thinsp;
+                <p>Траты на проезд на автобусе, в год:&thinsp;
                     <output name="busCostsPerYear" form="calc"
                         for="busCostsMonthly"></output>&thinsp;рублей
-                </h3>
-                <h3>Траты на моноколесо (и на автобус не в сезон), в год:&thinsp;
+                </p>
+                <p>Траты на моноколесо (и на автобус не в сезон), в год:&thinsp;
                     <output name="EUCCostsPerYear" form="calc"
                         for="UCCostsMonthly busCostsMonthly monthsOfTheYearAreSuitableForEUC maintenanceEUCCostPerYear"></output>&thinsp;рублей
-                </h3>
-                <h3 class="b">Экономия за проезд, в год:&thinsp;
+                </p>
+                <p class="b">Экономия за проезд, в год:&thinsp;
                     <output name="savingsOnTripsPerYear" form="calc"
                         for="busCostsPerYear EUCCostsPerYear"></output>&thinsp;рублей
-                </h3>
-                <h3 class="b">Окупаемость:&thinsp;
+                </p>
+                <p class="b">Окупаемость:&thinsp;
                     <output name="paybackEUC" form="calc"
                         for="purchasePriceEUC savingsOnTripsPerYear "></output>&thinsp;месяц(ев)
-                </h3>
+                </p>
             </div>
         </section>
 
@@ -137,7 +137,7 @@
                         value="33" min="10" max="130" step="1" />
                 </div>
                 <div class="custom-range-wrapper">
-                    <label for="maintenanceEUCCostPerYear,">Стоимость
+                    <label for="maintenanceEUCCostPerYear">Стоимость
                         обслуживания моноколеса в год, руб</label>
                     <output for="maintenanceEUCCostPerYear">200</output>
                     <input type="range" id="maintenanceEUCCostPerYear"

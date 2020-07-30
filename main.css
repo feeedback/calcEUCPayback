@@ -92,11 +92,11 @@ output {
 
     padding: 0px 1px 0px 2px;
     margin: 0 0 0 2px;
-    background-color: #ffffff50;
+    background-color: hsl(0, 0%, 100%, 0.4);
     border: 0;
 }
 
-h3 {
+p {
     margin: 0;
     padding: 4px 0;
     color: var(--dark-gray-color);
@@ -104,7 +104,7 @@ h3 {
     font-size: 1rem;
     font-weight: normal;
 }
-h3.b {
+p.b {
     font-weight: 500;
 }
 
