@@ -16,11 +16,11 @@
 
     --theme-color: 213;
     --very-strong-color: hsl(var(--theme-color), 86%, 48%);
-    --strong-color: hsl(var(--theme-color), 74%, 65%);
+    --strong-color: hsl(var(--theme-color), 74%, 64%);
     --medium-color: hsl(var(--theme-color), 70%, 71%);
     --light-color: hsl(var(--theme-color), 70%, 87%);
     --very-light-color: hsl(var(--theme-color), 100%, 98.5%);
-    --light-transparent5-color: hsl(var(--theme-color), 74%, 65%, 0.05);
+    --light-transparent5-color: hsl(var(--theme-color), 100%, 87%, 9%);
 
     --gray-color: hsl(0, 0%, 86%);
     --dark-gray-color: hsl(var(--theme-color), 10%, 34%);
@@ -32,7 +32,7 @@
     --range-option-color: var(--medium-color);
     --range-option-fill-bg-color: var(--light-color);
     --range-option-bg-color: var(--gray-color);
-    --range-output-font: var(--strong-color);
+    --range-output-font: var(--very-strong-color);
     --range-focus-outline: var(--strong-color);
     --range-output-border: var(--light-color);
     --range-output-bg-color: var(--light-transparent5-color);
