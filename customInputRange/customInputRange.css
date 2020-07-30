@@ -1,5 +1,4 @@
-.inputRangeWrapper {
-    -webkit-appearance: none;
+.custom-range-wrapper {
     border: 0;
     padding: 0;
     display: grid;
@@ -16,22 +15,20 @@
     position: relative;
 }
 
-label.custom-range {
+.custom-range-wrapper label {
     grid-area: label;
     padding: 3px 1px;
     font-size: var(--range-label-font-size);
 }
 
-output {
+.custom-range-wrapper output {
     font-weight: 500;
     border-radius: 10%;
     background-color: var(--range-output-bg-color);
     border: 1px dashed var(--range-output-border);
     cursor: default;
     color: var(--range-output-font);
-}
 
-output.custom-range {
     grid-area: titleValue;
     width: 4em;
     display: block;
@@ -42,7 +39,7 @@ output.custom-range {
     margin: 0 5px;
 }
 
-datalist.custom-range {
+.custom-range-wrapper datalist {
     display: flex;
     grid-area: datalist;
     font-size: 15px;
@@ -51,7 +48,7 @@ datalist.custom-range {
     position: relative;
 }
 
-option.custom-range {
+.custom-range-wrapper option {
     font-size: 0;
     padding: 0;
     width: 0;
@@ -62,7 +59,7 @@ option.custom-range {
     display: block;
 }
 
-option.custom-range::before {
+.custom-range-wrapper option::before {
     /* option scale divisions */
     background-color: var(--range-option-bg-color);
     display: block;
@@ -77,12 +74,12 @@ option.custom-range::before {
     position: absolute;
 }
 
-option.custom-range.fill::before {
+.custom-range-wrapper option.fill::before {
     /* option scale divisions */
     background-color: var(--range-option-fill-bg-color);
 }
 
-option.custom-range::after {
+.custom-range-wrapper option::after {
     /* option text label */
     color: var(--range-track-bg-color);
     display: block;
@@ -98,12 +95,12 @@ option.custom-range::after {
     font-weight: 400;
 }
 
-option.custom-range.fill::after {
+.custom-range-wrapper  option.fill::after {
     /* option text label */
     color: var(--range-option-color);
 }
 
-input[type='range'].custom-range {
+.custom-range-wrapper input[type='range'] {
     width: 100%;
     height: var(--range-height);
     padding: 0;
@@ -119,11 +116,11 @@ input[type='range'].custom-range {
     grid-area: inputRange;
 }
 
-input[type='range'].custom-range:focus {
+.custom-range-wrapper input[type='range']:focus {
     outline: 1px solid var(--range-focus-outline);
 }
 
-input[type='range'].custom-range::-webkit-slider-runnable-track {
+.custom-range-wrapper input[type='range']::-webkit-slider-runnable-track {
     width: 100%;
     border-color: transparent;
     border: 0;
@@ -140,28 +137,28 @@ input[type='range'].custom-range::-webkit-slider-runnable-track {
     background-repeat: no-repeat;
 }
 
-input[type='range'].custom-range:focus::-webkit-slider-thumb {
+.custom-range-wrapper input[type='range']:focus::-webkit-slider-thumb {
     box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--range-thumb-color);
 }
 
-input[type='range'].custom-range:focus::-webkit-slider-thumb:active {
+.custom-range-wrapper input[type='range']:focus::-webkit-slider-thumb:active {
     box-shadow: 0 0 0 1px #fff, 0 0 0px 2px var(--range-thumb-color);
     background-color: var(--range-thumb-active-color);
 }
 
-input[type='range'].custom-range:focus::-moz-range-thumb {
+.custom-range-wrapper input[type='range']:focus::-moz-range-thumb {
     box-shadow: 0 0 0 1px #fff, 0 0 0px 2px var(--range-thumb-color);
 }
 
-input[type='range'].custom-range:focus::-ms-thumb {
+.custom-range-wrapper input[type='range']:focus::-ms-thumb {
     box-shadow: 0 0 0 1px #fff, 0 0 0px 2px var(--range-thumb-color);
 }
 
-input[type='range'].custom-range::-moz-focus-outer {
+.custom-range-wrapper input[type='range']::-moz-focus-outer {
     border: 0;
 }
 
-input[type='range'].custom-range::-webkit-slider-thumb {
+.custom-range-wrapper input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     outline: 0;
@@ -177,7 +174,7 @@ input[type='range'].custom-range::-webkit-slider-thumb {
     margin-top: var(--range-track-shiftY);
 }
 
-input[type='range'].custom-range::-webkit-slider-thumb:active {
+.custom-range-wrapper input[type='range']::-webkit-slider-thumb:active {
     width: var(--range-thumb-active-size);
     height: var(--range-thumb-active-size);
     border-radius: var(--range-thumb-active-size);
@@ -185,7 +182,7 @@ input[type='range'].custom-range::-webkit-slider-thumb:active {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    input[type='range'].custom-range::-webkit-slider-thumb {
+    .custom-range-wrapper input[type='range']::-webkit-slider-thumb {
         -webkit-transition: none;
         transition: none;
     }

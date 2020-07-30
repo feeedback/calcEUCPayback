@@ -51,10 +51,6 @@ section {
     padding: 6px;
 }
 
-p.b {
-    font-weight: 500;
-}
-
 .info {
     margin: auto;
     margin-bottom: 5px;
@@ -88,20 +84,28 @@ p.b {
     }
 }
 
-.output {
+output {
+    font-weight: 500;
+    border-radius: 10%;
+    cursor: default;
+    color: var(--range-output-font);
+
     padding: 0px 1px 0px 2px;
     margin: 0 0 0 2px;
     background-color: #ffffff50;
     border: 0;
-    border-radius: 10%;
 }
 
-p {
+h3 {
     margin: 0;
     padding: 4px 0;
-    /* text-align: center; */
     color: var(--dark-gray-color);
     line-height: 18px;
+    font-size: 1rem;
+    font-weight: normal;
+}
+h3.b {
+    font-weight: 500;
 }
 
 /* "Colcade" library css+js flex Masonry layout */

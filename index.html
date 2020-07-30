@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="./main.css" rel="stylesheet">
-    <link href="./variables.css" rel="stylesheet">
-    <link href="./customInputRange.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,500&display=swap"
         rel="stylesheet">
-    <!-- <link href="./font.css" rel="stylesheet"> -->
-    <link href="./customInputRangeFillPercent.css" rel="stylesheet">
+    <link href="./customInputRange/variables.css" rel="stylesheet">
+    <link href="./customInputRange/customInputRange.css" rel="stylesheet">
+    <link href="./customInputRange/customInputRangeFillPercent.css" rel="stylesheet">
 </head>
 
 <body>
@@ -20,199 +19,164 @@
         <h1>Расчёт экономии за проезд и окупаемости моноколеса</h1>
         <section class="info">
             <div class="column">
-                <p>Траты на проезд на автобусе, в месяц:&thinsp;
-                    <output class="output" name="busCostsMonthly" form="calc"
+                <h3>Траты на проезд на автобусе, в месяц:&thinsp;
+                    <output name="busCostsMonthly" form="calc"
                         for="tripsToWorkPerMonth tripsToStorePerMonth busPrice"></output>&thinsp;рублей
-                </p>
-                <p>Траты на проезд на моноколесе, в месяц:&thinsp;
-                    <output class="output" name="EUCCostsMonthly" form="calc"
+                </h3>
+                <h3>Траты на проезд на моноколесе, в месяц:&thinsp;
+                    <output name="EUCCostsMonthly" form="calc"
                         for="mileagePerMonth priceOfElectricityDay priceOfElectricityNight shareOfDaytimeFromAll batteryCapacityEUC cruisingRangeEUC">
                     </output>&thinsp;рублей
-                </p>
-                <p>Экономия за проезд, в месяц:&thinsp;
-                    <output class="output" name="savingsOnTripsPerMonth" form="calc"
-                        for="busCostsMonthly EUCCostsMonthly"></output>&thinsp;рублей </p>
-                <p>Пробег, в месяц:&thinsp;
-                    <output class="output" form="calc" name="mileagePerMonth"
+                </h3>
+                <h3>Экономия за проезд, в месяц:&thinsp;
+                    <output name="savingsOnTripsPerMonth" form="calc"
+                        for="busCostsMonthly EUCCostsMonthly"></output>&thinsp;рублей
+                </h3>
+                <h3>Пробег, в месяц:&thinsp;
+                    <output form="calc" name="mileagePerMonth"
                         for="tripsToWorkPerMonth distanceToWork tripsToStorePerMonth distanceToStore"></output>&thinsp;км
-                </p>
+                </h3>
             </div>
             <div class="column">
-                <p>Траты на проезд на автобусе, в год:&thinsp;
-                    <output class="output" name="busCostsPerYear" form="calc"
-                        for="busCostsMonthly"></output>&thinsp;рублей </p>
-                <p>Траты на моноколесо (и на автобус не в сезон), в год:&thinsp;
-                    <output class="output" name="EUCCostsPerYear" form="calc"
+                <h3>Траты на проезд на автобусе, в год:&thinsp;
+                    <output name="busCostsPerYear" form="calc"
+                        for="busCostsMonthly"></output>&thinsp;рублей
+                </h3>
+                <h3>Траты на моноколесо (и на автобус не в сезон), в год:&thinsp;
+                    <output name="EUCCostsPerYear" form="calc"
                         for="UCCostsMonthly busCostsMonthly monthsOfTheYearAreSuitableForEUC maintenanceEUCCostPerYear"></output>&thinsp;рублей
-                </p>
-                <p class="b">Экономия за проезд, в год:&thinsp;
-                    <output class="output" name="savingsOnTripsPerYear" form="calc"
-                        for="busCostsPerYear EUCCostsPerYear"></output>&thinsp;рублей</p>
-                <p class="b">Окупаемость:&thinsp;
-                    <output class="output" name="paybackEUC" form="calc"
+                </h3>
+                <h3 class="b">Экономия за проезд, в год:&thinsp;
+                    <output name="savingsOnTripsPerYear" form="calc"
+                        for="busCostsPerYear EUCCostsPerYear"></output>&thinsp;рублей
+                </h3>
+                <h3 class="b">Окупаемость:&thinsp;
+                    <output name="paybackEUC" form="calc"
                         for="purchasePriceEUC savingsOnTripsPerYear "></output>&thinsp;месяц(ев)
-                </p>
+                </h3>
             </div>
         </section>
+
         <form name="calc" id="calc" class="grid-container"
             data-colcade="columns: .grid-col, items: .grid-item">
             <div class="grid-col"></div>
             <div class="grid-col"></div>
             <section class="grid-item">
                 <h2>Проезд</h2>
-                <div class="inputRangeWrapper">
-                    <label for="tripsToWorkPerMonth" class="custom-range">Сколько дней в
+                <div class="custom-range-wrapper">
+                    <label for="tripsToWorkPerMonth">Сколько дней в
                         месяц ездишь на работу</label>
-                    <output for="tripsToWorkPerMonth" class="custom-range">21</output>
+                    <output for="tripsToWorkPerMonth">21</output>
                     <input type="range" id="tripsToWorkPerMonth"
-                        name="tripsToWorkPerMonth" list="datalist_tripsToWorkPerMonth"
-                        value="22" min="0" max="31" step="1" title="22"
-                        class="custom-range" />
-                    <datalist id="datalist_tripsToWorkPerMonth" class="custom-range">
-                    </datalist>
+                        name="tripsToWorkPerMonth" value="22" min="0" max="31" step="1" />
                 </div>
-                <div class="inputRangeWrapper">
-                    <label for="tripsToStorePerMonth" class="custom-range">Сколько раз в
+                <div class="custom-range-wrapper">
+                    <label for="tripsToStorePerMonth">Сколько раз в
                         месяц ездишь в магазин/другие места</label>
-                    <output for="tripsToStorePerMonth" class="custom-range">5</output>
+                    <output for="tripsToStorePerMonth">5</output>
                     <input type="range" id="tripsToStorePerMonth"
-                        name="tripsToStorePerMonth" list="datalist_tripsToStorePerMonth"
-                        value="5" min="0" max="40" step="1" title="5"
-                        class="custom-range" />
-                    <datalist id="datalist_tripsToStorePerMonth" class="custom-range">
-                    </datalist>
+                        name="tripsToStorePerMonth" value="5" min="0" max="40" step="1" />
                 </div>
-                <div class="inputRangeWrapper">
-                    <label for="distanceToWork" class="custom-range">Расстояние до работы,
+                <div class="custom-range-wrapper">
+                    <label for="distanceToWork">Расстояние до работы,
                         км</label>
-                    <output for="distanceToWork" class="custom-range">8</output>
+                    <output for="distanceToWork">8</output>
                     <input type="range" id="distanceToWork" name="distanceToWork"
-                        list="datalist_distanceToWork" value="8" min="0" max="50" step="1"
-                        title="8" i class="custom-range" />
-                    <datalist id="datalist_distanceToWork" class="custom-range">
-                    </datalist>
+                        value="8" min="0" max="50" step="1" i />
                 </div>
-                <div class="inputRangeWrapper">
-                    <label for="distanceToStore" class="custom-range">Расстояние до
+                <div class="custom-range-wrapper">
+                    <label for="distanceToStore">Расстояние до
                         магазина/других мест, км</label>
-                    <output for="distanceToStore" class="custom-range">4</output>
+                    <output for="distanceToStore">4</output>
                     <input type="range" id="distanceToStore" name="distanceToStore"
-                        list="datalist_distanceToStore" value="4" min="0" max="50"
-                        step="1" title="4" i class="custom-range" />
-                    <datalist id="datalist_distanceToStore" class="custom-range">
-                    </datalist>
+                        value="4" min="0" max="50" step="1" i />
                 </div>
-                <div class="inputRangeWrapper">
-                    <label for="busPrice" class="custom-range">Цена проезда на автобусе,
+                <div class="custom-range-wrapper">
+                    <label for="busPrice">Цена проезда на автобусе,
                         руб</label>
-                    <output for="busPrice" class="custom-range">26</output>
-                    <input type="range" id="busPrice" name="busPrice"
-                        list="datalist_busPrice" value="26" min="10" max="70" step="1"
-                        title="26" i class="custom-range" />
-                    <datalist id="datalist_busPrice" class="custom-range"> </datalist>
+                    <output for="busPrice">26</output>
+                    <input type="range" id="busPrice" name="busPrice" value="26" min="10"
+                        max="70" step="1" i />
+                    <datalist id="datalist_busPrice"> </datalist>
                 </div>
             </section>
             <section class="grid-item">
                 <h2>Электроэнергия</h2>
-                <div class="inputRangeWrapper">
-                    <label for="priceOfElectricityDay" class="custom-range">Стоимость 1
+                <div class="custom-range-wrapper">
+                    <label for="priceOfElectricityDay">Стоимость 1
                         кВт*ч днём, руб</label>
-                    <output for="priceOfElectricityDay" class="custom-range">2.1</output>
+                    <output for="priceOfElectricityDay">2.1</output>
                     <input type="range" id="priceOfElectricityDay"
-                        name="priceOfElectricityDay" list="datalist_priceOfElectricityDay"
-                        value="2.1" min="1" max="7.5" step="0.1" title="2.1"
-                        class="custom-range" />
-                    <datalist id="datalist_priceOfElectricityDay" class="custom-range">
-                    </datalist>
+                        name="priceOfElectricityDay" value="2.1" min="1" max="7.5"
+                        step="0.1" />
                 </div>
-                <div class="inputRangeWrapper">
-                    <label for="priceOfElectricityNight" class="custom-range">Стоимость 1
+                <div class="custom-range-wrapper">
+                    <label for="priceOfElectricityNight">Стоимость 1
                         кВт*ч ночью, руб</label>
-                    <output for="priceOfElectricityNight" class="custom-range">1</output>
+                    <output for="priceOfElectricityNight">1</output>
                     <input type="range" id="priceOfElectricityNight"
-                        name="priceOfElectricityNight"
-                        list="datalist_priceOfElectricityNight" value="1" min="0.5"
-                        max="3.5" step="0.1" title="1" class="custom-range" />
-                    <datalist id="datalist_priceOfElectricityNight" class="custom-range">
-                    </datalist>
+                        name="priceOfElectricityNight" value="1" min="0.5" max="3.5"
+                        step="0.1" />
                 </div>
-                <div class="inputRangeWrapper">
-                    <label for="shareOfDaytimeFromAll" class="custom-range">Доля дневных
+                <div class="custom-range-wrapper">
+                    <label for="shareOfDaytimeFromAll">Доля дневных
                         от всех зарядок моноколеса (дневные + ночные), %</label>
-                    <output for="shareOfDaytimeFromAll" class="custom-range">0.6</output>
+                    <output for="shareOfDaytimeFromAll">0.6</output>
                     <input type="range" id="shareOfDaytimeFromAll"
-                        name="shareOfDaytimeFromAll" list="datalist_shareOfDaytimeFromAll"
-                        value="0.6" min="0" max="1" step="0.1" title="0.6"
-                        class="custom-range" />
-                    <datalist id="datalist_shareOfDaytimeFromAll" class="custom-range">
-                    </datalist>
+                        name="shareOfDaytimeFromAll" value="0.6" min="0" max="1"
+                        step="0.1" />
                 </div>
             </section>
             <section class="grid-item">
                 <h2>Окупаемость</h2>
-                <div class="inputRangeWrapper">
-                    <label for="purchasePriceEUC" class="custom-range">Стоимость
+                <div class="custom-range-wrapper">
+                    <label for="purchasePriceEUC">Стоимость
                         моноколеса, тыс. руб</label>
-                    <output for="purchasePriceEUC" class="custom-range">33</output>
+                    <output for="purchasePriceEUC">33</output>
                     <input type="range" id="purchasePriceEUC" name="purchasePriceEUC"
-                        list="datalist_purchasePriceEUC" value="33" min="10" max="130"
-                        step="1" title="33" class="custom-range" />
-                    <datalist id="datalist_purchasePriceEUC" class="custom-range">
-                    </datalist>
+                        value="33" min="10" max="130" step="1" />
                 </div>
-                <div class="inputRangeWrapper">
-                    <label for="maintenanceEUCCostPerYear," class="custom-range">Стоимость
+                <div class="custom-range-wrapper">
+                    <label for="maintenanceEUCCostPerYear,">Стоимость
                         обслуживания моноколеса в год, руб</label>
-                    <output for="maintenanceEUCCostPerYear"
-                        class="custom-range">200</output>
+                    <output for="maintenanceEUCCostPerYear">200</output>
                     <input type="range" id="maintenanceEUCCostPerYear"
-                        name="maintenanceEUCCostPerYear"
-                        list="datalist_maintenanceEUCCostPerYear" value="200" min="0"
-                        max="3000" step="100" title="200" class="custom-range" />
-                    <datalist id="datalist_maintenanceEUCCostPerYear"
-                        class="custom-range"> </datalist>
+                        name="maintenanceEUCCostPerYear" value="200" min="0" max="3000"
+                        step="100" />
+                    <datalist id="datalist_maintenanceEUCCostPerYear"> </datalist>
                 </div>
-                <div class="inputRangeWrapper">
-                    <label for="monthsOfTheYearAreSuitableForEUC"
-                        class="custom-range">Сколько месяцев в году пригодно для езды на
+                <div class="custom-range-wrapper">
+                    <label for="monthsOfTheYearAreSuitableForEUC">Сколько месяцев в году
+                        пригодно для езды на
                         моноколесе</label>
-                    <output for="monthsOfTheYearAreSuitableForEUC"
-                        class="custom-range">7</output>
+                    <output for="monthsOfTheYearAreSuitableForEUC">6</output>
                     <input type="range" id="monthsOfTheYearAreSuitableForEUC"
-                        name="monthsOfTheYearAreSuitableForEUC"
-                        list="datalist_monthsOfTheYearAreSuitableForEUC" value="7" min="0"
-                        max="12" step="1" title="7" class="custom-range" />
-                    <datalist id="datalist_monthsOfTheYearAreSuitableForEUC"
-                        class="custom-range"> </datalist>
+                        name="monthsOfTheYearAreSuitableForEUC" value="6" min="0" max="12"
+                        step="1" />
+                    <datalist id="datalist_monthsOfTheYearAreSuitableForEUC"> </datalist>
                 </div>
             </section>
             <section class="grid-item">
                 <h2>Моноколесо</h2>
-                <div class="inputRangeWrapper">
-                    <label for="cruisingRangeEUC" class="custom-range">Запас хода
+                <div class="custom-range-wrapper">
+                    <label for="cruisingRangeEUC">Запас хода
                         моноколеса, км</label>
-                    <output for="cruisingRangeEUC" class="custom-range">30</output>
+                    <output for="cruisingRangeEUC">30</output>
                     <input type="range" id="cruisingRangeEUC" name="cruisingRangeEUC"
-                        list="datalist_cruisingRangeEUC" value="30" min="10" max="200"
-                        step="5" title="30" class="custom-range" />
-                    <datalist id="datalist_cruisingRangeEUC" class="custom-range">
-                    </datalist>
+                        value="30" min="10" max="200" step="5" />
                 </div>
-                <div class="inputRangeWrapper">
-                    <label for="batteryCapacityEUC" class="custom-range">Емкость
+                <div class="custom-range-wrapper">
+                    <label for="batteryCapacityEUC">Емкость
                         аккумулятора, Вт*ч</label>
-                    <output for="batteryCapacityEUC" class="custom-range">310</output>
+                    <output for="batteryCapacityEUC">310</output>
                     <input type="range" id="batteryCapacityEUC" name="batteryCapacityEUC"
-                        list="datalist_batteryCapacityEUC" value="310" min="200"
-                        max="2200" step="10" title="310" class="custom-range" />
-                    <datalist id="datalist_batteryCapacityEUC" class="custom-range">
-                    </datalist>
+                        value="310" min="200" max="2200" step="10" />
                 </div>
             </section>
         </form>
     </main>
     <script src="./colcade.min.js" defer></script>
-    <script src="./customInputRange.js" defer></script>
+    <script src="./customInputRange/customInputRange.js" defer></script>
     <script src="./calc.js" defer></script>
 </body>
 
