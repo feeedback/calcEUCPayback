@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./main.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,500&display=swap"
+        rel="stylesheet">
+    <link href="./customInputRange/variables.css" rel="stylesheet">
+    <link href="./customInputRange/customInputRange.css" rel="stylesheet">
+    <link href="./customInputRange/customInputRangeFillPercent.css" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <h1>Расчёт экономии за проезд и окупаемости моноколеса</h1>
+        <section class="info">
+            <div class="column">
+                <h3>Траты на проезд на автобусе, в месяц:&thinsp;
+                    <output name="busCostsMonthly" form="calc"
+                        for="tripsToWorkPerMonth tripsToStorePerMonth busPrice"></output>&thinsp;рублей
+                </h3>
+                <h3>Траты на проезд на моноколесе, в месяц:&thinsp;
+                    <output name="EUCCostsMonthly" form="calc"
+                        for="mileagePerMonth priceOfElectricityDay priceOfElectricityNight shareOfDaytimeFromAll batteryCapacityEUC cruisingRangeEUC">
+                    </output>&thinsp;рублей
+                </h3>
+                <h3>Экономия за проезд, в месяц:&thinsp;
+                    <output name="savingsOnTripsPerMonth" form="calc"
+                        for="busCostsMonthly EUCCostsMonthly"></output>&thinsp;рублей
+                </h3>
+                <h3>Пробег, в месяц:&thinsp;
+                    <output form="calc" name="mileagePerMonth"
+                        for="tripsToWorkPerMonth distanceToWork tripsToStorePerMonth distanceToStore"></output>&thinsp;км
+                </h3>
+            </div>
+            <div class="column">
+                <h3>Траты на проезд на автобусе, в год:&thinsp;
+                    <output name="busCostsPerYear" form="calc"
+                        for="busCostsMonthly"></output>&thinsp;рублей
+                </h3>
+                <h3>Траты на моноколесо (и на автобус не в сезон), в год:&thinsp;
+                    <output name="EUCCostsPerYear" form="calc"
+                        for="UCCostsMonthly busCostsMonthly monthsOfTheYearAreSuitableForEUC maintenanceEUCCostPerYear"></output>&thinsp;рублей
+                </h3>
+                <h3 class="b">Экономия за проезд, в год:&thinsp;
+                    <output name="savingsOnTripsPerYear" form="calc"
+                        for="busCostsPerYear EUCCostsPerYear"></output>&thinsp;рублей
+                </h3>
+                <h3 class="b">Окупаемость:&thinsp;
+                    <output name="paybackEUC" form="calc"
+                        for="purchasePriceEUC savingsOnTripsPerYear "></output>&thinsp;месяц(ев)
+                </h3>
+            </div>
+        </section>
+
+        <form name="calc" id="calc" class="grid-container"
+            data-colcade="columns: .grid-col, items: .grid-item">
+            <div class="grid-col"></div>
+            <div class="grid-col"></div>
+            <section class="grid-item">
+                <h2>Проезд</h2>
+                <div class="custom-range-wrapper">
+                    <label for="tripsToWorkPerMonth">Сколько дней в
+                        месяц ездишь на работу</label>
+                    <output for="tripsToWorkPerMonth">21</output>
+                    <input type="range" id="tripsToWorkPerMonth"
+                        name="tripsToWorkPerMonth" value="22" min="0" max="31" step="1" />
+                </div>
+                <div class="custom-range-wrapper">
+                    <label for="tripsToStorePerMonth">Сколько раз в
+                        месяц ездишь в магазин/другие места</label>
+                    <output for="tripsToStorePerMonth">5</output>
+                    <input type="range" id="tripsToStorePerMonth"
+                        name="tripsToStorePerMonth" value="5" min="0" max="40" step="1" />
+                </div>
+                <div class="custom-range-wrapper">
+                    <label for="distanceToWork">Расстояние до работы,
+                        км</label>
+                    <output for="distanceToWork">8</output>
+                    <input type="range" id="distanceToWork" name="distanceToWork"
+                        value="8" min="0" max="50" step="1" i />
+                </div>
+                <div class="custom-range-wrapper">
+                    <label for="distanceToStore">Расстояние до
+                        магазина/других мест, км</label>
+                    <output for="distanceToStore">4</output>
+                    <input type="range" id="distanceToStore" name="distanceToStore"
+                        value="4" min="0" max="50" step="1" i />
+                </div>
+                <div class="custom-range-wrapper">
+                    <label for="busPrice">Цена проезда на автобусе,
+                        руб</label>
+                    <output for="busPrice">26</output>
+                    <input type="range" id="busPrice" name="busPrice" value="26" min="10"
+                        max="70" step="1" i />
+                    <datalist id="datalist_busPrice"> </datalist>
+                </div>
+            </section>
+            <section class="grid-item">
+                <h2>Электроэнергия</h2>
+                <div class="custom-range-wrapper">
+                    <label for="priceOfElectricityDay">Стоимость 1
+                        кВт*ч днём, руб</label>
+                    <output for="priceOfElectricityDay">2.1</output>
+                    <input type="range" id="priceOfElectricityDay"
+                        name="priceOfElectricityDay" value="2.1" min="1" max="7.5"
+                        step="0.1" />
+                </div>
+                <div class="custom-range-wrapper">
+                    <label for="priceOfElectricityNight">Стоимость 1
+                        кВт*ч ночью, руб</label>
+                    <output for="priceOfElectricityNight">1</output>
+                    <input type="range" id="priceOfElectricityNight"
+                        name="priceOfElectricityNight" value="1" min="0.5" max="3.5"
+                        step="0.1" />
+                </div>
+                <div class="custom-range-wrapper">
+                    <label for="shareOfDaytimeFromAll">Доля дневных
+                        от всех зарядок моноколеса (дневные + ночные), %</label>
+                    <output for="shareOfDaytimeFromAll">0.6</output>
+                    <input type="range" id="shareOfDaytimeFromAll"
+                        name="shareOfDaytimeFromAll" value="0.6" min="0" max="1"
+                        step="0.1" />
+                </div>
+            </section>
+            <section class="grid-item">
+                <h2>Окупаемость</h2>
+                <div class="custom-range-wrapper">
+                    <label for="purchasePriceEUC">Стоимость
+                        моноколеса, тыс. руб</label>
+                    <output for="purchasePriceEUC">33</output>
+                    <input type="range" id="purchasePriceEUC" name="purchasePriceEUC"
+                        value="33" min="10" max="130" step="1" />
+                </div>
+                <div class="custom-range-wrapper">
+                    <label for="maintenanceEUCCostPerYear,">Стоимость
+                        обслуживания моноколеса в год, руб</label>
+                    <output for="maintenanceEUCCostPerYear">200</output>
+                    <input type="range" id="maintenanceEUCCostPerYear"
+                        name="maintenanceEUCCostPerYear" value="200" min="0" max="3000"
+                        step="100" />
+                    <datalist id="datalist_maintenanceEUCCostPerYear"> </datalist>
+                </div>
+                <div class="custom-range-wrapper">
+                    <label for="monthsOfTheYearAreSuitableForEUC">Сколько месяцев в году
+                        пригодно для езды на
+                        моноколесе</label>
+                    <output for="monthsOfTheYearAreSuitableForEUC">6</output>
+                    <input type="range" id="monthsOfTheYearAreSuitableForEUC"
+                        name="monthsOfTheYearAreSuitableForEUC" value="6" min="0" max="12"
+                        step="1" />
+                    <datalist id="datalist_monthsOfTheYearAreSuitableForEUC"> </datalist>
+                </div>
+            </section>
+            <section class="grid-item">
+                <h2>Моноколесо</h2>
+                <div class="custom-range-wrapper">
+                    <label for="cruisingRangeEUC">Запас хода
+                        моноколеса, км</label>
+                    <output for="cruisingRangeEUC">30</output>
+                    <input type="range" id="cruisingRangeEUC" name="cruisingRangeEUC"
+                        value="30" min="10" max="200" step="5" />
+                </div>
+                <div class="custom-range-wrapper">
+                    <label for="batteryCapacityEUC">Емкость
+                        аккумулятора, Вт*ч</label>
+                    <output for="batteryCapacityEUC">310</output>
+                    <input type="range" id="batteryCapacityEUC" name="batteryCapacityEUC"
+                        value="310" min="200" max="2200" step="10" />
+                </div>
+            </section>
+        </form>
+    </main>
+    <script src="./colcade.min.js" defer></script>
+    <script src="./customInputRange/customInputRange.js" defer></script>
+    <script src="./calc.js" defer></script>
+</body>
+
+</html>
