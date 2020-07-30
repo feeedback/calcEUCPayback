@@ -1,0 +1,192 @@
+.inputRangeWrapper {
+    -webkit-appearance: none;
+    border: 0;
+    padding: 0;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+        'label titleValue'
+        'inputRange inputRange'
+        'datalist datalist';
+
+    color: var(--dark-gray-color);
+    margin: 0;
+    padding: 12px 1rem 20px 1rem;
+    position: relative;
+}
+
+label.custom-range {
+    grid-area: label;
+    padding: 3px 1px;
+    font-size: var(--range-label-font-size);
+}
+
+output {
+    font-weight: 500;
+    border-radius: 10%;
+    background-color: var(--range-output-bg-color);
+    border: 1px dashed var(--range-output-border);
+    cursor: default;
+    color: var(--range-output-font);
+}
+
+output.custom-range {
+    grid-area: titleValue;
+    width: 4em;
+    display: block;
+    text-align: end;
+    align-self: flex-end;
+    justify-self: flex-end;
+    padding: 2px 5px 2px 2px;
+    margin: 0 5px;
+}
+
+datalist.custom-range {
+    display: flex;
+    grid-area: datalist;
+    font-size: 15px;
+    justify-content: space-between;
+    margin: 0 0.5em;
+    position: relative;
+}
+
+option.custom-range {
+    font-size: 0;
+    padding: 0;
+    width: 0;
+    min-height: 0px;
+    height: 0px;
+    position: relative;
+    margin-top: calc((var(--range-height) / -2) + (var(--range-track-height) / 2));
+    display: block;
+}
+
+option.custom-range::before {
+    /* option scale divisions */
+    background-color: var(--range-option-bg-color);
+    display: block;
+    padding: 0;
+    margin: 0;
+
+    font-size: 0;
+    content: ' ';
+    width: var(--range-scale-divisions-width);
+    height: var(--range-scale-divisions-height);
+    transform: translateX(-50%);
+    position: absolute;
+}
+
+option.custom-range.fill::before {
+    /* option scale divisions */
+    background-color: var(--range-option-fill-bg-color);
+}
+
+option.custom-range::after {
+    /* option text label */
+    color: var(--range-track-bg-color);
+    display: block;
+    padding: 0;
+    margin: 0;
+
+    content: attr(label) ' ';
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+    top: calc(var(--range-height) / 2 + 0.5em + 0px);
+    /* + 1px* */
+    font-size: var(--range-option-font-size);
+    font-weight: 400;
+}
+
+option.custom-range.fill::after {
+    /* option text label */
+    color: var(--range-option-color);
+}
+
+input[type='range'].custom-range {
+    width: 100%;
+    height: var(--range-height);
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    z-index: 1;
+    position: relative;
+
+    grid-area: inputRange;
+}
+
+input[type='range'].custom-range:focus {
+    outline: 1px solid var(--range-focus-outline);
+}
+
+input[type='range'].custom-range::-webkit-slider-runnable-track {
+    width: 100%;
+    border-color: transparent;
+    border: 0;
+    border-radius: var(--range-thumb-size);
+    height: var(--range-track-height);
+    background-color: var(--range-track-bg-color);
+    background: linear-gradient(
+            to right,
+            var(--range-track-fill-bg-color),
+            var(--range-track-fill-bg-color)
+        ),
+        var(--range-track-bg-color);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+}
+
+input[type='range'].custom-range:focus::-webkit-slider-thumb {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--range-thumb-color);
+}
+
+input[type='range'].custom-range:focus::-webkit-slider-thumb:active {
+    box-shadow: 0 0 0 1px #fff, 0 0 0px 2px var(--range-thumb-color);
+    background-color: var(--range-thumb-active-color);
+}
+
+input[type='range'].custom-range:focus::-moz-range-thumb {
+    box-shadow: 0 0 0 1px #fff, 0 0 0px 2px var(--range-thumb-color);
+}
+
+input[type='range'].custom-range:focus::-ms-thumb {
+    box-shadow: 0 0 0 1px #fff, 0 0 0px 2px var(--range-thumb-color);
+}
+
+input[type='range'].custom-range::-moz-focus-outer {
+    border: 0;
+}
+
+input[type='range'].custom-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: 0;
+    background-color: var(--range-thumb-color);
+    border: 0;
+    box-shadow: 0;
+    /* -webkit-transition: background-color .1s ease-in-out, border-color .1s ease-in-out, box-shadow .1s ease-in-out; */
+    /* transition: background-color .1s ease-in-out, border-color .1s ease-in-out, box-shadow .1s ease-in-out; */
+
+    width: var(--range-thumb-size);
+    height: var(--range-thumb-size);
+    border-radius: var(--range-thumb-size);
+    margin-top: var(--range-track-shiftY);
+}
+
+input[type='range'].custom-range::-webkit-slider-thumb:active {
+    width: var(--range-thumb-active-size);
+    height: var(--range-thumb-active-size);
+    border-radius: var(--range-thumb-active-size);
+    margin-top: var(--range-track-active-shiftY);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    input[type='range'].custom-range::-webkit-slider-thumb {
+        -webkit-transition: none;
+        transition: none;
+    }
+}
