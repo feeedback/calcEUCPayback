@@ -36,4 +36,14 @@
     --range-focus-outline: var(--strong-color);
     --range-output-border: var(--light-color);
     --range-output-bg-color: var(--light-transparent5-color);
+
+    animation: changeBgColor linear 30s infinite;
+    /* animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: changeBgColor; */
 }

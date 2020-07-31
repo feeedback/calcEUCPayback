@@ -25,7 +25,7 @@ main {
 
 h1 {
     text-align: center;
-    font-size: calc(1.5rem + 0.5vw);
+    font-size: calc(1.4rem + 0.5vw);
     font-weight: 500;
     color: var(--dark-gray-color);
     padding: calc(12px + 0.5vh) 8px calc(8px + 0.5vh) 8px;
@@ -165,4 +165,40 @@ p.b {
             order: 2;
         } */
     }
+}
+
+h1,
+main {
+    position: relative;
+}
+.rainbow {
+    position: absolute;
+    right: 29px;
+    bottom: 24px;
+    padding: 5px;
+}
+.rainbow label {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    /* border: 1px dashed var(--medium-color); */
+    background-color: transparent;
+    background-image: url(./customInputRange/rainbow.png);
+    padding: 0px;
+    margin: 0px;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+.rainbow input {
+    position: absolute;
+    margin: 0;
+    left: 0;
+}
+
+.rainbow input:focus {
+    outline: none;
+}
+.rainbow label:focus-within {
+    outline: 1px solid var(--range-focus-outline);
 }
