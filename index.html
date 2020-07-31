@@ -14,11 +14,21 @@
     <link href="./customInputRange/variables.css" rel="stylesheet">
     <link href="./customInputRange/customInputRange.css" rel="stylesheet">
     <link href="./customInputRange/customInputRangeFillPercent.css" rel="stylesheet">
+    <link href="./customInputRange/animationBgColorChange.css" rel="stylesheet">
 </head>
 
 <body>
     <main>
-        <h1>Расчёт экономии за проезд и окупаемости моноколеса</h1>
+        <h1>Расчёт экономии за проезд и окупаемости моноколеса&nbsp;&nbsp;&thinsp;
+            <span class="rainbow">
+                <label for="rainbow"
+                    title="Turn on/off background color change animation">
+                    <input type="checkbox" id="rainbow" name="rainbow"
+                        title="Turn on/off background color change animation"
+                        onchange="document.documentElement.classList.toggle('runningAnimation')"></label>
+                    </span>
+        </h1>
+
         <section class="info">
             <div class="column">
                 <p>Траты на проезд на автобусе, в месяц:&thinsp;
@@ -177,9 +187,23 @@
             </section>
         </form>
     </main>
-    <script src="./colcade.min.js" defer></script>
-    <script src="./customInputRange/customInputRange.js" defer></script>
-    <script src="./calc.js" defer></script>
+    <script src="./colcade.min.js"></script>
+    <script src="./customInputRange/customInputRange.js"></script>
+    <script src="./calc.js"></script>
+    <!-- <script>
+        // !!! animation on js, bad for performance. switched to css keyframes animation
+
+        const changeThemeColor = () => {
+            const root = document.documentElement;
+
+            const prevVal = getComputedStyle(root).getPropertyValue("--theme-color");
+            // const prevVal = root.style.getPropertyValue("--theme-color");
+            root.style.setProperty("--theme-color", (Number(prevVal) + 1) % 360)
+            setTimeout(changeThemeColor, 200);
+            // console.log('changed');
+        }
+        setTimeout(changeThemeColor, 200);
+    </script> -->
 </body>
 
 </html>
