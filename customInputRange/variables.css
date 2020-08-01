@@ -2,19 +2,15 @@
     --range-height: 19px;
     --range-track-height: 3px;
     --range-thumb-size: 14px;
-    --range-track-shiftY: calc(
-        (var(--range-thumb-size) - var(--range-track-height)) / -2
-    );
     --range-thumb-active-size: 14px;
-    --range-track-active-shiftY: calc(
-        (var(--range-thumb-active-size) - var(--range-track-height)) / -2
-    );
+    --range-thumb-border-radius: 50%;
     --range-scale-divisions-height: 4px;
     --range-scale-divisions-width: 1px;
+    --range-option-label-shiftY: 1px;
     --range-option-font-size: 14px;
     --range-label-font-size: 17px;
 
-    --theme-color: 213;
+    --theme-color:213;
     --very-strong-color: hsl(var(--theme-color), 86%, 48%);
     --strong-color: hsl(var(--theme-color), 74%, 64%);
     --medium-color: hsl(var(--theme-color), 70%, 71%);
@@ -36,14 +32,4 @@
     --range-focus-outline: var(--strong-color);
     --range-output-border: var(--light-color);
     --range-output-bg-color: var(--light-transparent5-color);
-
-    animation: changeBgColor linear 30s infinite;
-    /* animation-duration: 10s;
-    animation-timing-function: linear;
-    animation-delay: 0s;
-    animation-iteration-count: infinite;
-    animation-direction: normal;
-    animation-fill-mode: none;
-    animation-play-state: running;
-    animation-name: changeBgColor; */
 }
