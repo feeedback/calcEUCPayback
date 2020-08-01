@@ -85,17 +85,15 @@
     display: block;
     padding: 0;
     margin: 0;
-
-    content: attr(label) ' ';
+    content: attr(label);
     position: absolute;
     transform: translateX(-50%) translateY(-50%);
-    top: calc(var(--range-height) / 2 + 0.5em + 0px);
-    /* + 1px* */
+    top: calc(var(--range-height) / 2 + 0.5em + var(--range-option-label-shiftY));
     font-size: var(--range-option-font-size);
     font-weight: 400;
 }
 
-.custom-range-wrapper  option.fill::after {
+.custom-range-wrapper option.fill::after {
     /* option text label */
     color: var(--range-option-color);
 }
@@ -115,9 +113,17 @@
 
     grid-area: inputRange;
 }
-
 .custom-range-wrapper input[type='range']:focus {
-    outline: 1px solid var(--range-focus-outline);
+    outline: none;
+}
+
+@media (pointer: fine) and (hover: hover) {
+    .custom-range-wrapper input[type='range']:focus {
+        outline: 2px solid var(--range-focus-outline);
+    }
+}
+.custom-range-wrapper input[type='range'].focusOn {
+    outline: 2px solid var(--range-focus-outline);
 }
 
 .custom-range-wrapper input[type='range']::-webkit-slider-runnable-track {
@@ -161,24 +167,24 @@
 .custom-range-wrapper input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    outline: 0;
+    /* outline: 0; */
     background-color: var(--range-thumb-color);
     border: 0;
     box-shadow: 0;
     /* -webkit-transition: background-color .1s ease-in-out, border-color .1s ease-in-out, box-shadow .1s ease-in-out; */
     /* transition: background-color .1s ease-in-out, border-color .1s ease-in-out, box-shadow .1s ease-in-out; */
-
+    
     width: var(--range-thumb-size);
     height: var(--range-thumb-size);
-    border-radius: var(--range-thumb-size);
-    margin-top: var(--range-track-shiftY);
+    border-radius: var(--range-thumb-border-radius);
+    margin-top: calc((var(--range-thumb-size) - var(--range-track-height)) / -2);
 }
 
 .custom-range-wrapper input[type='range']::-webkit-slider-thumb:active {
     width: var(--range-thumb-active-size);
     height: var(--range-thumb-active-size);
-    border-radius: var(--range-thumb-active-size);
-    margin-top: var(--range-track-active-shiftY);
+    border-radius: var(--range-thumb-border-radius);
+    margin-top: calc((var(--range-thumb-active-size) - var(--range-track-height)) / -2);
 }
 
 @media (prefers-reduced-motion: reduce) {
