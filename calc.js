@@ -3,7 +3,7 @@
 // TODO: Добавить пресеты, типа город-колесо
 /* example presets:
 Moscow, InMotion V10
-15km job, 10km shop, electricity price - 5.35 day, 1.5 night, bus price - 50rub, 45, 650kwh, 67000 rub
+15km job, 10km shop, electricity price - 5.4 day, 1.5 night, bus price - 50rub, 45km, 650kwh, 67000 rub
 
 Tyumen, NineBot One S2
 8km job, 5km shop, electricity price - 2.1 day, 1.0 night, bus price - 26rub, 25km, 310kwh, 33000 rub
