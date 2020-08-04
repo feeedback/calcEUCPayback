@@ -1,6 +1,19 @@
-// *********************
 // calc.js
 
+// TODO: Добавить пресеты, типа город-колесо
+/* example presets:
+Moscow, InMotion V10
+15km job, 10km shop, electricity price - 5.35 day, 1.5 night, bus price - 50rub, 45, 650kwh, 67000 rub
+
+Tyumen, NineBot One S2
+8km job, 5km shop, electricity price - 2.1 day, 1.0 night, bus price - 26rub, 25km, 310kwh, 33000 rub
+
+Tyumen, InMotion  V10
+8km job, 5km shop, electricity price - 2.1 day, 1.0 night, bus price - 26rub, 45km, 650kwh, 67000 rub
+
+Tyumen, Gotway Tesla V2 
+8km job, 5km shop, electricity price - 2.1 day, 1.0 night, bus price - 26rub, 70km, 1020kwh, 87000 rub
+*/
 const fnOutputsMap = {
     busCostsMonthly: ({ tripsToWorkPerMonth, tripsToStorePerMonth, busPrice }) =>
         (tripsToWorkPerMonth + tripsToStorePerMonth) * 2 * busPrice,
@@ -43,7 +56,7 @@ const fnOutputsMap = {
     savingsOnTripsPerYear: ({ busCostsPerYear, EUCCostsPerYear }) =>
         (busCostsPerYear - EUCCostsPerYear).toFixed(0),
     paybackEUC: ({ purchasePriceEUC, savingsOnTripsPerYear }) =>
-        (((purchasePriceEUC * 1000) / savingsOnTripsPerYear) * 12).toFixed(0),
+        ((purchasePriceEUC * 1000) / savingsOnTripsPerYear).toFixed(1),
 };
 
 const calculateAndSetOutputValue = (input) => {
