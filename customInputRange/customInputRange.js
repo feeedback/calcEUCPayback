@@ -98,17 +98,3 @@ document
     .forEach((inputRange) =>
         inputRange.addEventListener('input', customInputRangeHandler)
     );
-document
-    .querySelectorAll('.custom-range-wrapper')
-    .forEach((inputRange) =>
-        inputRange.addEventListener('touchstart', (ev) =>
-            ev.targetTouches[0].target.classList.add('focusOn')
-        )
-    );
-document
-    .querySelectorAll('.custom-range-wrapper')
-    .forEach((inputRange) =>
-        inputRange.addEventListener('touchend', (ev) =>
-            ev.changedTouches[0].target.classList.remove('focusOn')
-        )
-    );
