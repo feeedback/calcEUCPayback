@@ -1,8 +1,12 @@
 :root {
-    --range-height: 20px;
+    /* --range-height: 20px; */
+    --range-height: max(var(--range-track-height), var(--range-thumb-size));
+
+    /* WARNING! Need thumb-size>= track-height */
     --range-track-height: 6px;
-    --range-track-margin-horizontally: 1px;
-    --range-thumb-size: 14px;
+    --range-thumb-size: 16px;
+
+    /* --range-track-margin-horizontally: 0px; */
     --range-thumb-border-radius: 0%;
     --range-scale-divisions-height: 5px;
     --range-scale-divisions-width: 1px;
@@ -35,4 +39,12 @@
     --range-focus-outline-color: var(--strong-color);
     --range-output-border-color: var(--light-color);
     --range-output-bg-color: var(--light-transparent5-color);
+}
+
+@-moz-document url-prefix() {
+    :root {
+        --range-margin-up-down: calc(
+            (var(--range-thumb-size) - var(--range-track-height)) / 2
+        );
+    }
 }

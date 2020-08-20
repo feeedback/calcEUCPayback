@@ -72,6 +72,14 @@ const minifyCssDev = (cb) => {
         .pipe(dest(paths.src));
     cb();
 };
+const cssDevAutoprefixer = (cb) => {
+    const postcssPlugins = [autoprefixer('last 1 version', 'Firefox 78')];
+
+    src(`${paths.src}/**/*.css`)
+        .pipe(postcss(postcssPlugins))
+        .pipe(dest(paths.src));
+    cb();
+};
 
 const trueSyncSeries = (...tasks) => {
     return (cb) => {
@@ -105,6 +113,7 @@ const watchAll = (cb) => {
 };
 
 exports.minifyCssDev = minifyCssDev;
+exports.cssDevAutoprefixer = cssDevAutoprefixer;
 exports.copyToDist = copyToDist;
 
 exports.build = build;
