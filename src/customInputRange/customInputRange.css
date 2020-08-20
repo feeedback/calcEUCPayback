@@ -4,43 +4,43 @@
 .custom-range-wrapper *::after,
 .custom-range-wrapper *::-webkit-slider-thumb,
 .custom-range-wrapper *::-webkit-slider-runnable-track {
-    padding: 0;
-    border: 0;
-    margin: 0;
-    display: block;
     appearance: none;
+    display: block;
+    margin: 0;
+    border: 0;
+    padding: 0;
 }
 
 .custom-range-wrapper {
     display: grid;
-    grid-template-rows: auto auto;
-    grid-template-columns: 1fr auto;
+    position: relative;
     grid-template-areas:
         'label titleValue'
         'inputRange inputRange'
         'datalist datalist';
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
 
     padding: 12px 1rem 24px 1rem;
-    position: relative;
     color: var(--dark-gray-color);
 }
 
 .custom-range-wrapper output {
-    font-weight: 500;
-    border-radius: 10%;
-    background-color: var(--range-output-bg-color);
-    border: 1px dashed var(--range-output-border);
-    cursor: default;
-    color: var(--range-output-font);
+    display: block;
 
     grid-area: titleValue;
-    width: 4em;
-    display: block;
-    text-align: end;
     align-self: flex-end;
     justify-self: flex-end;
-    padding: 0px 5px 0px 2px;
+    cursor: default;
     margin: 0 5px 1px 5px;
+    border: 1px dashed var(--range-output-border);
+    border-radius: 10%;
+    background-color: var(--range-output-bg-color);
+    padding: 0px 5px 0px 2px;
+    width: 4em;
+    color: var(--range-output-font);
+    font-weight: 500;
+    text-align: end;
 }
 
 .custom-range-wrapper label {
@@ -50,14 +50,14 @@
 }
 
 .custom-range-wrapper input[type='range'] {
-    width: 100%;
-    background-color: transparent;
-    cursor: pointer;
-    height: var(--range-height);
-    z-index: 1;
     position: relative;
 
     grid-area: inputRange;
+    z-index: 1;
+    cursor: pointer;
+    background-color: transparent;
+    width: 100%;
+    height: var(--range-height);
 }
 
 .custom-range-wrapper input[type='range']:focus {
@@ -77,12 +77,12 @@
     top: calc(var(--range-track-height) / 2);
     transform: translateY(-50%);
     outline: 0;
+    box-shadow: 0;
+    border-radius: var(--range-thumb-border-radius);
 
     background-color: var(--range-thumb-color);
     width: var(--range-thumb-size);
     height: var(--range-thumb-size);
-    border-radius: var(--range-thumb-border-radius);
-    box-shadow: 0;
     /* -webkit-transition: background-color .1s ease-in-out, border-color .1s ease-in-out, box-shadow .1s ease-in-out; */
     /* transition: background-color .1s ease-in-out, border-color .1s ease-in-out, box-shadow .1s ease-in-out; */
 }
@@ -105,68 +105,68 @@
 }
 
 .custom-range-wrapper input[type='range']::-webkit-slider-runnable-track {
-    width: 100%;
     margin: 0 var(--range-track-margin-horizontally);
-
-    height: var(--range-track-height);
     /* border-radius: var(--range-track-height); */
     border-radius: 0;
-    background-color: var(--range-track-bg-color);
     background: linear-gradient(
             to right,
             var(--range-track-fill-bg-color),
             var(--range-track-fill-bg-color)
         ),
         var(--range-track-bg-color);
-    background-size: 0% 100%;
+    background-color: var(--range-track-bg-color);
     background-repeat: no-repeat;
+    background-size: 0% 100%;
+    width: 100%;
+
+    height: var(--range-track-height);
 }
 
 .custom-range-wrapper datalist {
-    position: relative;
     display: flex;
-    justify-content: space-between;
-    font-size: 0;
-    padding: 0
-        calc((var(--range-thumb-size) / 2) + var(--range-track-margin-horizontally));
+    position: relative;
 
     grid-area: datalist;
+    justify-content: space-between;
+    padding: 0
+        calc((var(--range-thumb-size) / 2) + var(--range-track-margin-horizontally));
+    font-size: 0;
 }
 
 .custom-range-wrapper option {
+    width: 0px;
     height: 0px;
     min-height: 0px;
-    width: 0px;
 }
 
 .custom-range-wrapper option::before {
+    position: absolute;
+    top: calc((var(--range-height) / -2) + (var(--range-track-height) / 2));
+    transform: translateX(-50%);
+    background-color: var(--range-option-scale-bg-color);
+
+    width: var(--range-scale-divisions-width);
+    height: var(--range-scale-divisions-height);
     /* option scale divisions */
     font-size: 0;
     line-height: 0;
     content: '';
-    transform: translateX(-50%);
-    position: absolute;
-    top: calc((var(--range-height) / -2) + (var(--range-track-height) / 2));
-
-    width: var(--range-scale-divisions-width);
-    height: var(--range-scale-divisions-height);
-    background-color: var(--range-option-scale-bg-color);
 }
 .custom-range-wrapper option.fill::before {
     background-color: var(--range-option-scale-fill-bg-color);
 }
 
 .custom-range-wrapper option::after {
-    /* option text label */
-    content: attr(label);
     position: absolute;
-    transform: translateX(-50%) translateY(-50%);
     top: calc(2px + 0.5em + var(--range-option-label-shiftY));
+    transform: translateX(-50%) translateY(-50%);
+    color: var(--range-option-label-color);
     /* 2px - outline */
 
     font-size: var(--range-option-font-size);
     font-weight: 400;
-    color: var(--range-option-label-color);
+    /* option text label */
+    content: attr(label);
 }
 .custom-range-wrapper option.fill::after {
     color: var(--range-option-label-fill-color);

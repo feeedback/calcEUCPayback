@@ -553,7 +553,7 @@
     }
 }
 :root {
-    animation: changeBgColor linear 26s 0.1s infinite none paused;
+    animation: changeBgColor linear 22s 0.1s infinite none paused;
 }
 :root.runningAnimation {
     animation-play-state: running;
