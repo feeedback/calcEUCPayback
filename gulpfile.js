@@ -81,7 +81,7 @@ const trueSyncSeries = (...tasks) => {
 };
 
 const afterBuild = parallel(minifyCss, minifyHtml, minifyJs);
-const build = trueSyncSeries('minifyCssDev', 'copyToDist', 'afterBuild');
+const build = trueSyncSeries('copyToDist', 'afterBuild');
 
 const browserSyncInit = (cb) => {
     browserSync.init({ server: { baseDir: paths.build } });
