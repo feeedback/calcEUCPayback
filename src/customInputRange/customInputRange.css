@@ -33,12 +33,12 @@
     justify-self: flex-end;
     cursor: default;
     margin: 0 5px 1px 5px;
-    border: 1px dashed var(--range-output-border);
+    border: 1px dashed var(--range-output-border-color);
     border-radius: 10%;
     background-color: var(--range-output-bg-color);
     padding: 0px 5px 0px 2px;
     width: 4em;
-    color: var(--range-output-font);
+    color: var(--range-output-font-color);
     font-weight: 500;
     text-align: end;
 }
@@ -65,11 +65,11 @@
 }
 @media (pointer: fine) and (hover: hover) {
     .custom-range-wrapper input[type='range']:focus {
-        outline: 2px solid var(--range-focus-outline);
+        outline: 2px solid var(--range-focus-outline-color);
     }
 }
 .custom-range-wrapper input[type='range'].focusOn {
-    outline: 2px solid var(--range-focus-outline);
+    outline: 2px solid var(--range-focus-outline-color);
 }
 
 .custom-range-wrapper input[type='range']::-webkit-slider-thumb {

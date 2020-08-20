@@ -104,7 +104,8 @@ const watchAll = (cb) => {
     cb();
 };
 
-exports.minifyStyleDev = minifyCssDev;
+exports.minifyCssDev = minifyCssDev;
+exports.copyToDist = copyToDist;
 
 exports.build = build;
 exports.afterBuild = afterBuild;

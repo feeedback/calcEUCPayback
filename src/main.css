@@ -37,7 +37,7 @@ h1,h2 {
 
 h2 {
     margin: 7px 0 7px 16px;
-    color: var(--gray-color);
+    color: var(--gray);
     font-size: 24px;
     font-style: italic;
 }
@@ -94,7 +94,7 @@ output {
     background-color: hsl(0, 0%, 100%, 0.4);
 
     padding: 0px 1px 0px 2px;
-    color: var(--range-output-font);
+    color: var(--range-output-font-color);
     font-weight: 500;
 }
 
