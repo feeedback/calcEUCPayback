@@ -14,7 +14,6 @@
     <link href="./customInputRange/variables.css" rel="stylesheet">
     <link href="./customInputRange/customInputRange.css" rel="stylesheet">
     <link href="./customInputRange/customInputRangeFillPercent.css" rel="stylesheet">
-    <link href="./customInputRange/animationBgColorChange.css" rel="stylesheet">
 </head>
 
 <body>
@@ -25,7 +24,7 @@
                     title="Turn on/off background color change animation">
                     <input type="checkbox" id="rainbow" name="rainbow"
                         title="Turn on/off background color change animation"
-                        onchange="document.documentElement.classList.toggle('runningAnimation')"></label>
+                        onchange="toggleThemeColor()"></label>
             </span>
         </h1>
 
@@ -64,7 +63,8 @@
                 </p>
                 <p class="b">Окупаемость:&thinsp;
                     <output name="paybackEUC" form="calc"
-                        for="purchasePriceEUC savingsOnTripsPerYear "></output>&thinsp;года (лет)
+                        for="purchasePriceEUC savingsOnTripsPerYear "></output>&thinsp;года
+                    (лет)
                 </p>
             </div>
         </section>
@@ -190,20 +190,31 @@
     <script src="./colcade.min.js"></script>
     <script src="./customInputRange/customInputRange.js"></script>
     <script src="./calc.js"></script>
-    <!-- <script>
+    <script>
         // !!! animation on js, bad for performance. switched to css keyframes animation
 
+        var animationBgColor = null;
         const changeThemeColor = () => {
             const root = document.documentElement;
 
             const prevVal = getComputedStyle(root).getPropertyValue("--theme-color");
             // const prevVal = root.style.getPropertyValue("--theme-color");
-            root.style.setProperty("--theme-color", (Number(prevVal) + 1) % 360)
-            setTimeout(changeThemeColor, 200);
+            root.style.setProperty("--theme-color", (Number(prevVal) + 20) % 360)
+            animationBgColor = setTimeout(changeThemeColor, 4000);
+            return animationBgColor;
             // console.log('changed');
         }
-        setTimeout(changeThemeColor, 200);
-    </script> -->
+
+        const toggleThemeColor = () => {
+            if (animationBgColor) {
+                clearTimeout(animationBgColor);
+                animationBgColor = null;
+            }
+            else {
+                animationBgColor = changeThemeColor();
+            }
+        }
+    </script>
 
 </body>
 
