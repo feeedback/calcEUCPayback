@@ -14,102 +14,92 @@ const postcssCalc = require('postcss-calc');
 const postcssMergeRules = require('postcss-merge-rules');
 
 const paths = {
-    src: 'src',
-    build: 'dist',
+  src: 'src',
+  build: 'dist',
 };
 
 // eslint-disable-next-line no-unused-vars
-const copyToDist = () => {
-    return src(`${paths.src}/**/*.*`).pipe(dest(paths.build));
-};
+const copyToDist = () => src(`${paths.src}/**/*.*`).pipe(dest(paths.build));
 
 const minifyCss = (cb) => {
-    const postcssPlugins = [
-        cssDeclarationSorter({ order: 'concentric-css' }),
-        postcssFlexbugsFixes(),
-        postcssCustomProperties(),
-        postcssCalc(),
-        postcssMergeRules(),
-        cssDeclarationSorter({ order: 'concentric-css' }),
-        autoprefixer(),
-        cssnano(),
-    ];
+  const postcssPlugins = [
+    cssDeclarationSorter({ order: 'concentric-css' }),
+    postcssFlexbugsFixes(),
+    postcssCustomProperties(),
+    postcssCalc(),
+    postcssMergeRules(),
+    cssDeclarationSorter({ order: 'concentric-css' }),
+    autoprefixer(),
+    cssnano(),
+  ];
 
-    src(`${paths.build}/**/*.css`)
-        .pipe(postcss(postcssPlugins))
-        .pipe(dest(paths.build));
-    cb();
+  src(`${paths.build}/**/*.css`).pipe(postcss(postcssPlugins)).pipe(dest(paths.build));
+  cb();
 };
 const minifyHtml = (cb) => {
-    src(`${paths.build}/**/*.html`)
-        .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
-        .pipe(dest(paths.build));
-    cb();
+  src(`${paths.build}/**/*.html`)
+    .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
+    .pipe(dest(paths.build));
+  cb();
 };
 const minifyJs = (cb) => {
-    src(`${paths.build}/**/*.js`)
-        .pipe(
-            terser({
-                keep_fnames: true,
-                mangle: false,
-            })
-        )
-        .pipe(dest(paths.build));
+  src(`${paths.build}/**/*.js`)
+    .pipe(
+      terser({
+        keep_fnames: true,
+        mangle: false,
+      })
+    )
+    .pipe(dest(paths.build));
 
-    cb();
+  cb();
 };
 
 const minifyCssDev = (cb) => {
-    const postcssPlugins = [
-        cssDeclarationSorter({ order: 'concentric-css' }),
-        postcssFlexbugsFixes(),
-        postcssMergeRules(),
-        cssDeclarationSorter({ order: 'concentric-css' }),
-    ];
+  const postcssPlugins = [
+    cssDeclarationSorter({ order: 'concentric-css' }),
+    postcssFlexbugsFixes(),
+    postcssMergeRules(),
+    cssDeclarationSorter({ order: 'concentric-css' }),
+  ];
 
-    src(`${paths.src}/**/*.css`)
-        .pipe(postcss(postcssPlugins))
-        .pipe(dest(paths.src));
-    cb();
+  src(`${paths.src}/**/*.css`).pipe(postcss(postcssPlugins)).pipe(dest(paths.src));
+  cb();
 };
 const cssDevAutoprefixer = (cb) => {
-    const postcssPlugins = [autoprefixer('last 1 version', 'Firefox 78')];
+  const postcssPlugins = [autoprefixer('last 1 version', 'Firefox 78')];
 
-    src(`${paths.src}/**/*.css`)
-        .pipe(postcss(postcssPlugins))
-        .pipe(dest(paths.src));
-    cb();
+  src(`${paths.src}/**/*.css`).pipe(postcss(postcssPlugins)).pipe(dest(paths.src));
+  cb();
 };
 
-const trueSyncSeries = (...tasks) => {
-    return (cb) => {
-        execSync(tasks.map((f) => `gulp ${f}`).join('&&'));
-        cb();
-    };
+const trueSyncSeries = (...tasks) => (cb) => {
+  execSync(tasks.map((f) => `gulp ${f}`).join('&&'));
+  cb();
 };
 
 const afterBuild = parallel(minifyCss, minifyHtml, minifyJs);
 const build = trueSyncSeries('copyToDist', 'afterBuild');
 
 const browserSyncInit = (cb) => {
-    browserSync.init({ server: { baseDir: paths.build } });
-    cb();
+  browserSync.init({ server: { baseDir: paths.build } });
+  cb();
 };
 const browserSyncReload = (cb) => {
-    browserSync.reload();
-    cb();
+  browserSync.reload();
+  cb();
 };
 
 const watchAll = (cb) => {
-    const watchOptions = {
-        ignored: paths.build,
-        delay: 300,
-        awaitWriteFinish: true,
-    };
-    const taskWhenChange = series(build, browserSyncReload);
+  const watchOptions = {
+    ignored: paths.build,
+    delay: 300,
+    awaitWriteFinish: true,
+  };
+  const taskWhenChange = series(build, browserSyncReload);
 
-    watch(paths.src, watchOptions, taskWhenChange);
-    cb();
+  watch(paths.src, watchOptions, taskWhenChange);
+  cb();
 };
 
 exports.minifyCssDev = minifyCssDev;
